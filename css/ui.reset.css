@@ -1,0 +1,49 @@
+@charset "utf-8";
+/*****************/
+/* JANE reset CSS */
+html, body, div, p, iframe, frameset, h1, h2, h3, h4, h5, h6, strong, span, b, em, var, label, legend, ul, ol, li, dl, dt, dd, 
+table, thead, tbody, tfoot, tr, th, td, caption, form, fieldset, input, textarea, sub, sup, img, a, del, button, pre, 
+header, footer, section, article, aside {padding:0;margin:0;}
+body {color:#333;font-size:14px;font-family:'맑은 고딕', 'Malgun Gothic', '돋음', Dotum, Apple SD Gothic Neo, AppeGothic, Arial, Helvetica, sans-serif;line-height:1.42;letter-spacing:0px;}
+/* 태그 리셋 */
+button {cursor:pointer;background:transparent;}
+img, button, fieldset, table {border:0;}
+em, address, del {font-style:normal;}
+label, a {display:inline-block;}
+strong, b {font-weight:bold;}
+/* form */
+input, select, label, button, textarea {}
+textarea {padding:10px;border:1px solid #d5d5d5;color:#444;background:#fafafa;box-sizing:border-box;}
+textarea:target, 
+textarea:focus {outline:none;border:1px solid #d5d5d5;padding:8px 7px 8px 9px;}
+select, input[type='text'], input[type='password'] {height:30px;padding:0;color:#444;line-height:28px;border:1px solid #d5d5d5;box-sizing:border-box;}
+input[type='checkbox'],input[type='radio'] {width:13px;height:13px;outline:0;}
+input[type='checkbox'] {border:1px solid #d5d5d5;}
+button, select, input, img, label, strong, span, em {vertical-align:middle;}
+/* 목록 스타일 리셋 */
+ul, ol, li {list-style:none;}
+/* table */
+table {width:100%;border-collapse:separate;border-spacing:0;}
+th, td {word-break:break-all;word-wrap:break-word;}
+
+/* alink 세팅 */
+a {color:#333;}
+a, a:hover, a:focus, a:active, a:visited {outline:0;text-decoration:none;vertical-align:middle;}
+
+/* 대체텍스트 and 숨김처리 */
+caption, legend, .hidden {position:absolute;top:0;left:0;overflow:hidden;visibility:hidden;width:0 !important;height:0 !important;font-size:0 !important;line-height:0 !important;}
+
+/* #skip */
+#skip {width:100%;height:0;}
+#skip a {width:0;height:0;font-size:0;line-height:0;}
+#skip a:active,
+#skip a:focus {display:block;position:absolute;left:0;top:0;width:100%;height:60px;color:#fff;font-size:24px;font-weight:600;text-align:center;line-height:58px;background:#01c18d;z-index:10;}
+
+/* Layout */
+#wrap {}
+header,
+footer {position:relative;margin:0 auto;padding:20px 0;width:1200px;}
+#container {}
+.inner {display:block;position:relative;margin:0 auto;width:1200px;}
+.inner:after {display:block;content:"";clear:both;}
+.content {margin-bottom:100px;}
