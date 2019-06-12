@@ -145,35 +145,70 @@
     </div> <!-- //.section -->
 
     <div class="section">
-      <h2>세로형 탭</h2>
-      <div class="tab_vertical">
-        <div class="tab">
-          <a href=".tab1">학습관리</a>
-          <a href=".tab2">학습 현황 관리</a>
-          <a href=".tab3">숙제 등록 및 검사</a>
-          <a href=".tab4">상장 관리</a>
+        <h2>세로형 탭</h2>
+        <div class="tab_vertical">
+          <div class="tab">
+            <a href=".tab1">학습관리</a>
+            <a href=".tab2">학습 현황 관리</a>
+            <a href=".tab3">숙제 등록 및 검사</a>
+            <a href=".tab4">상장 관리</a>
+          </div>
+      
+          <div class="tab_content">
+            <div class="tab1">
+              <h2>tab1</h2>
+              <div>tab1 area</div>
+            </div>
+            <div class="tab2">
+              <h2>tab2</h2>
+              <div>tab2 area</div>
+            </div>
+            <div class="tab3">
+              <h2>tab3</h2>
+              <div>tab3 area</div>
+            </div>
+            <div class="tab4">
+              <h2>tab4</h2>
+              <div>tab4 area</div>
+            </div>
+          </div>
         </div>
-    
-        <div class="tab_content">
-          <div class="tab1">
-            <h2>tab1</h2>
-            <div>tab1 area</div>
+      </div> <!-- //.section -->
+
+      <div class="section">
+          <h2>양 사이드 메뉴 탭</h2>
+          <div class="tab_both">
+            <div class="tab"> 
+              <!-- [D] 탭이 여러개로 쪼개져 있을 때 tab 하위에 group 형식으로 감싸줘야함. -->
+              <div class="group left">
+                <a href=".tab_1">탭1</a>
+                <a href=".tab_2">탭2</a>
+              </div>
+              <div class="tab_content">
+                <div class="tab_1">
+                  <h2>tab1</h2>
+                  <div>tab1 area</div>
+                </div>
+                <div class="tab_2">
+                  <h2>tab2</h2>
+                  <div>tab2 area</div>
+                </div>
+                <div class="tab_3">
+                  <h2>tab3</h2>
+                  <div>tab3 area</div>
+                </div>
+                <div class="tab_4">
+                  <h2>tab4</h2>
+                  <div>tab4 area</div>
+                </div>
+              </div>
+              <div class="group right">
+                <a href=".tab_3">탭3</a>
+                <a href=".tab_4">탭4</a>
+              </div>
+            </div>
           </div>
-          <div class="tab2">
-            <h2>tab2</h2>
-            <div>tab2 area</div>
-          </div>
-          <div class="tab3">
-            <h2>tab3</h2>
-            <div>tab3 area</div>
-          </div>
-          <div class="tab4">
-            <h2>tab4</h2>
-            <div>tab4 area</div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- //.section -->
+        </div> <!-- //.section -->
 
     <div class="section">
       <h2>트리형 세로형 탭</h2>
@@ -238,7 +273,7 @@
 
 	</div><!-- //#container -->
 	<footer id="footer">
-		2019.06.12
+		2019-06 yoonseo
 	</footer><!-- //#footer -->
 </div><!-- // #wrap -->
 <script
@@ -250,16 +285,27 @@
 pageUI = (function(){
 	function FristLoad(){
     //FristLoad
-    tabManager.set({
+
+    // 일반 탭
+    $('.tab_default .tab a, .tab_vertical .tab a, .tab_default_vertical .tab a, .tab_tree .tab a').tabManager({ container : '.tab_content' });
+
+    // 마우스 오버 탭
+    $('.tab.mouseover a').tabManager({ 
+      container : '.tab_content',
+      mouseover : true 
+    });
+
+    // 여러개 탭
+    $('.tab_both .tab a').tabManager({
+      container : '.tab_content',
       multi : true,
-      container : '.tab_content'
+      defaultTab: 0
     });
 
     // a 이벤트 차단
     $('a').on('click', function(e){
       e.preventDefault();
     });
-
 	};
 	return {
 		FristLoad : FristLoad

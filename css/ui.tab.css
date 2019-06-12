@@ -4,12 +4,14 @@
 */
 h1, h2, h3, h4, h5{ margin-bottom:20px; }
 header, footer{ width:auto; }
-header{ text-align:center; }
+header,
+footer{ text-align:center; }
+
 /* ui_hidden 이건 공통꺼를 쓰도록, 임시로 한 부분*/
 .ui_hidden{ display:block; position:absolute; top:0; left:0; z-index:-1; font-size:1px; }
 #wrap{ margin:30px auto; max-width:800px; }
 .section{ clear:both; }
-.section + .section{ margin-top:20px; }
+.section + .section{ margin-top:40px; padding-top:40px; border-top:1px dashed #333; }
 
 /* tab */
 .tab_content > div, 
@@ -63,16 +65,23 @@ header{ text-align:center; }
 .tab_tree .tab li:not(.all) a{ margin-top:5px; }
 
 /* ##### 세로형 ##### */
-.tab_vertical{ overflow:hidden; height:282px; }
+.tab_vertical{ overflow:hidden; height:284px; }
 .tab_vertical .tab{ display:inline-block; float:left; }
 .tab_vertical .tab a{ display:block; padding:20px; width:180px; text-align:center; border:2px solid #aaa; border-radius:10px; box-sizing:border-box; }
-.tab_vertical .tab a.on{ position:relative; border-color:pink; }
-.tab_vertical .tab a.on:before{ content:''; display:block; position:absolute; top:50%; right:-7px; margin-top:-5px; width:0px; height:0px; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:5px solid none; border-left:5px solid pink; }
+.tab_vertical .tab a.on{ position:relative; border-color:#333; }
+.tab_vertical .tab a.on:before{ content:''; display:block; position:absolute; top:50%; right:-7px; margin-top:-5px; width:0px; height:0px; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:5px solid none; border-left:5px solid #333; }
 .tab_vertical .tab a + a { margin-top:10px; }
 
-.tab_vertical .tab_content{ padding:20px; margin:0 20px; float:left; width:500px; height:100%; border:2px solid pink; border-radius:10px;  box-sizing:border-box; }
+.tab_vertical .tab_content{ padding:20px; margin:0 20px; float:left; width:500px; height:100%; border:2px solid #333; border-radius:10px;  box-sizing:border-box; }
 
 /* 양쪽 사이드로 있을 경우 */
-.tab_vertical.both .tab_content{ width:300px; }
-.tab_vertical.both .tab.left{  }
-.tab_vertical.both .tab.right{  }
+.tab_both{ overflow:hidden; height:137px; }
+.tab_both .tab{ overflow:hidden; height:100%; }
+.tab_both .tab .group{ width:180px; float:left; }
+.tab_both .tab .group.left a.on:before{ content:''; display:block; position:absolute; top:50%; right:-7px; margin-top:-5px; width:0px; height:0px; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:5px solid none; border-left:5px solid #333; }
+.tab_both .tab .group.right a.on:before{ content:''; display:block; position:absolute; top:50%; left:-7px; margin-top:-5px; width:0px; height:0px; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:5px solid #333; border-left:5px solid none; }
+
+.tab_both .tab a{ display:block; padding:20px; width:180px; text-align:center; border:2px solid #aaa; border-radius:10px; box-sizing:border-box; }
+.tab_both .tab a.on{ position:relative; border-color:#333; }
+.tab_both .tab a + a{ margin-top:10px; }
+.tab_both .tab_content{ padding:20px; margin:0 20px; width:300px; float:left; height:100%; border:3px solid #333; border-radius:10px;  box-sizing:border-box; }
