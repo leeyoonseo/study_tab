@@ -68,11 +68,27 @@ footer{ text-align:center; }
 .tab_vertical{ overflow:hidden; height:284px; }
 .tab_vertical .tab{ display:inline-block; float:left; }
 .tab_vertical .tab a{ display:block; padding:20px; width:180px; text-align:center; border:2px solid #aaa; border-radius:10px; box-sizing:border-box; }
+.tab_vertical .tab a + a{ margin-top:10px; }
 .tab_vertical .tab a.on{ position:relative; border-color:#333; }
 .tab_vertical .tab a.on:before{ content:''; display:block; position:absolute; top:50%; right:-7px; margin-top:-5px; width:0px; height:0px; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:5px solid none; border-left:5px solid #333; }
-.tab_vertical .tab a + a { margin-top:10px; }
+.tab_vertical .tab li + li a { margin-top:10px; }
 
 .tab_vertical .tab_content{ padding:20px; margin:0 20px; float:left; width:500px; height:100%; border:2px solid #333; border-radius:10px;  box-sizing:border-box; }
+
+/* ##### 세로형 2 ##### */
+.tab_vertical_menu{ height:250px; border:1px solid #aaa; }
+.tab_vertical_menu .tab_content{ width:516px; height:100%; float:left; }
+.tab_vertical_menu .tab_content .content{ margin:0; height:100%; }
+.tab_vertical_menu .tab{ width:180px; height:100%; float:right; border-left:1px solid #aaa; }
+.tab_vertical_menu .tab a{ display:inline-block; width:100%; height:50px; line-height:50px; box-sizing:border-box; color:#203C81; font-weight:700; text-align:center; }
+.tab_vertical_menu .tab li + li{ border-top:1px solid #aaa; }
+.tab_vertical_menu .tab a:hover{ background-color:rgba(32,60,129,0.1); }
+
+.tab_vertical_menu .content.looby{ background:url(http://img.littlefox.co.kr/static/contents/img/C0008186/main_new.jpg?241856)no-repeat; }
+.tab_vertical_menu .content.moster{ background:url(http://img.littlefox.co.kr/static/contents/img/C0008158/main_new.jpg?031038)no-repeat; }
+.tab_vertical_menu .content.central{ background:url(http://img.littlefox.co.kr/static/contents/img/C0008079/main_new.jpg?040509)no-repeat; }
+.tab_vertical_menu .content.balto{ background:url(http://img.littlefox.co.kr/static/contents/img/C0002863/main_new.jpg?201328)no-repeat; }
+.tab_vertical_menu .content.peter{ background:url(http://img.littlefox.co.kr/static/contents/img/C0008124/main_new.jpg?140724)no-repeat; }
 
 /* 양쪽 사이드로 있을 경우 */
 .tab_both{ overflow:hidden; height:137px; }

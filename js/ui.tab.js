@@ -53,7 +53,8 @@
     }
 
     function triggerClick(target){
-      target.eq(info.defaultTab).trigger('click');
+      var $target = target.closest('.tab').find('a').eq(info.defaultTab);
+      $target.trigger('click');
     }
   };
 }(jQuery));
