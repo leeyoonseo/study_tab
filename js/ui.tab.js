@@ -1,60 +1,83 @@
-'use strict';
- /*
-* @author Lee yoonseo (2019.05.30)
-* 탭 버튼 클릭 시 컨테이너 show, hide
-* @param options {object}
-* - multi : true일 때, 분기문 실행(tab이 디자인 상 떨어져있을때)
-* - mouseover : true일 때 마우스 오버 시 이벤트 호출
-* - tab : 처음 tab을 호출한 객체
-* - defaultTab : 0이 기본이고, 처음 눌러져야 할 탭 index
-* - container[필수] : 탭 클릭 시 보여져야하는 콘텐츠들의 상위 객체
-*/ 
+/**
+ * 탭 매니저
+ * @author yoonseo Lee (2019.05.30)
+ * @refactoring yoonseo Lee (2019.10.25)
+ * @options
+ *   tabArea {String} - a태그를 감싸고 있는 id, class 값
+ *   contentArea {String} - 콘텐츠 태그를 감싸고 있는 id, class 값
+ *   defaultTab {Number, Boolean} - 처음에 오픈 될 탭의 숫자 값, 미 입력 시 기본이 0. true = 1, false = 최초 오픈되지 않음
+ *   mouseover {Boolean} - 마우스 오버 가능
+ */
 (function($){
+    'use strict';
 
-  $.fn.tabManager = function(options){
-    var info = {
-      multi : false, // info.tab이 두개가 될 때
-      mouseover : false, // 마우스 오버 시 탭 
-      tab : this, // tab은 호출한 객체
-      defaultTab : 0, // 처음에 오픈 될 탭의 숫자 값 {string} or {number}
-      container : '' // 탭 버튼 클릭 시 노출 될 콘텐츠 {string}
-    }
+    $.fn.tabManager = function(options){  
+        var managerEl = $(this);
+        var options = $.extend(true, {
+            tabArea : '.tab_box',
+            contentArea : '.container', 
+            defaultTab : 0,
+            mouseover : false 
+        }, options);
+        
+        init();
+        
+        // ----------------------------------------------------------------------
 
-    if(options) info = $.extend(true, info, options);
+        // 최초 실행
+        function init(){
+            attachEvent();
 
-    var _init = (function(info){
-      var $tab = info.tab;
-      var $tabParent = $tab.parent();
+            // 기본 탭 오픈 옵션이 필요없는 경우
+            if(options.defaultTab === false) return false;
 
-      // 탭 클릭
-      $tab.on('click', function(e){
-        e.preventDefault();
-        setClass($(this));
-      });
-      
-      $tab.on('mouseover', function(){
-        // 마우스 오버 설정을 했을 때
-        if(info.mouseover) $(this).trigger('click');
-      });
+            if(managerEl.length > 1){
+                managerEl.each(function(){
+                    onClickDefaultTab($(this));
+                });
 
-      // info.tab의 부모가 여러개 일 경우(여러개의 탭을 같은 이름으로 사용할 경우)
-      ($tabParent.length > 1 && !info.multi) ? $tabParent.each(function(){ triggerClick($(this).children()); })
-                              : triggerClick($tab);
+            }else{
+                onClickDefaultTab(managerEl);
 
-    })(info);
+            }
+        }
 
-    // 클래스 추가 및 삭제
-    function setClass(target){
-      var $content = $( target.attr('href') );
-      // 탭
-      target.closest('.tab').find('a.on').removeClass('on').end().end().addClass('on') ;
-      // 콘텐츠
-      $content.siblings().removeClass('on').end().addClass('on');
-    }
+        // 이벤트 바인딩
+        function attachEvent(){
+            var allTabEl = managerEl.find('a');
 
-    function triggerClick(target){
-      var $target = target.closest('.tab').find('a').eq(info.defaultTab);
-      $target.trigger('click');
-    }
-  };
+            allTabEl.on('click', function(e){
+                e.preventDefault();
+                onToggleClass($(this));
+            });
+
+            // 마우스오버 옵션
+            if(options.mouseover){
+                allTabEl.on('mouseover', function(e){
+                    e.preventDefault();
+                    $(this).trigger('click')
+                });
+            }
+        }
+
+        // 기본 탭 오픈
+        function onClickDefaultTab(tab){
+            var tabEl = tab.find('a').eq(options.defaultTab);
+            tabEl.trigger('click');
+        }
+
+        // 컨텐츠 오픈
+        function onToggleClass(tabEl){
+            var contentEl = $(tabEl.attr('href'));
+            
+            // 탭
+            tabEl.closest(options.tabArea).find('.on').removeClass('on');
+            tabEl.addClass('on');
+
+            // 콘텐츠
+            contentEl.closest(options.contentArea).find('.on').removeClass('on');
+            contentEl.addClass('on');
+        }
+
+    }; // tabManager
 }(jQuery));
